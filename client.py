@@ -61,7 +61,7 @@ def command_injection(level):
     element = driver.find_element_by_id('output')
     text = element.text
     secret = text.split('\n')[-1]
-    flag = base64.b64decode(secret)
+    flag = str(base64.b64decode(secret))
     grader.command_injection_verify(level, flag)
 
     driver.quit()
