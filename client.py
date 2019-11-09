@@ -56,7 +56,8 @@ def sql():
                 soup = BeautifulSoup(driver.page_source)
                 tr_elements = soup.find_all('tr')
                 if len(tr_elements) == 2:
-                    print(tr_elements)
+                    print(type(tr_elements))
+                    print(type(tr_elements[0]))
                     pwd = pwd_n
                     flag = True
                     break
