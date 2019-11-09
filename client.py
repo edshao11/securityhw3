@@ -7,24 +7,26 @@ import argparse
 
 # NOTE: If you choose to run the servers on different ports for testing, please remember to set it back before submission.
 TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
-#TARGET_SERVER_ENDPOINT = 'http://35.223.68.134:80'
+# TARGET_SERVER_ENDPOINT = 'http://35.223.68.134:80'
 
 # NOTE: where you need to update your static IP address of your server
 ATTACKER_SERVER_ENDPOINT = 'http://localhost:1338'
+
+
 # ATTACKER_SERVER_ENDPOINT = 'http://your static IP address:80'
 
 def xss(vuln_type, level):
     options = Options()
     options.add_argument("--headless")
-    driver = webdriver.Firefox(options=options) # Starts the browser
+    driver = webdriver.Firefox(options=options)  # Starts the browser
 
-    driver.get(TARGET_SERVER_ENDPOINT) # Makes a request to the specified URL.
+    driver.get(TARGET_SERVER_ENDPOINT)  # Makes a request to the specified URL.
 
     # DO SOMETHING
 
     # Grader verification should be done in attacker_server/server.py
 
-    driver.quit() # Closes the browser
+    driver.quit()  # Closes the browser
 
 
 def sql():
@@ -32,12 +34,12 @@ def sql():
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
 
-    soup = BeautifulSoup(driver.page_source) # Get the page contents and use for parsing.
+    soup = BeautifulSoup(driver.page_source)  # Get the page contents and use for parsing.
     # tr_elements = soup.find_all('tr') # Refer to the BeautifulSoup documentation for more details.
 
     # TODO: Populate the user_pass_list
     # user_pass_list = [] # Where this should be a list of lists for containing the users and passwords
-                        # eg. [['username', 'password']]
+    # eg. [['username', 'password']]
 
     for i in range(1, 4):
         pwd = ''
@@ -51,7 +53,7 @@ def sql():
                 driver.get(url)
                 tr_elements = soup.find_all('tr')
                 if len(tr_elements) == 2:
-                    pwd += chr(j)
+                    pwd = pwd_n
                     flag = True
                     break
         print(pwd)
@@ -60,8 +62,8 @@ def sql():
 
     driver.quit()
 
-def command_injection(level):
 
+def command_injection(level):
     options = Options()
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
@@ -86,8 +88,8 @@ def command_injection(level):
 
     driver.quit()
 
-def csrf(level):
 
+def csrf(level):
     options = Options()
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
@@ -109,7 +111,7 @@ if __name__ == '__main__':
 
     # NOTE: Feel free to modify the code here for your own purposes.
     # The code below can be used as an example.
-    
+
     if args.q == "command_injection":
         assert args.level in ['all', 'low', 'medium', 'high']
         if args.level == "all":
@@ -131,7 +133,7 @@ if __name__ == '__main__':
         exit()
 
     if args.q == "xss":
-        methods = {"1":"reflected", "2":"stored", "3":"DOM"}
+        methods = {"1": "reflected", "2": "stored", "3": "DOM"}
         for vuln_type in ['1', '2', '3']:
             print("XSS with method", methods[vuln_type])
             if args.level == "all":
@@ -150,4 +152,3 @@ if __name__ == '__main__':
         for level in levels:
             csrf(level)
         exit()
-
