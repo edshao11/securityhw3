@@ -60,14 +60,12 @@ def sql():
                     print(pwd_n)
                     pwd = pwd_n
                     if username is None:
-                        username = tr_elements[1].find_all('td')[1].contents
-                        print(username)
+                        username = tr_elements[1].find_all('td')[1].contents[0]
                     flag = True
                     break
         user_pass_list.append({username: pwd})
-    print(user_pass_list)
 
-    # grader.sql_verify('low', user_pass_list)
+    grader.sql_verify('low', user_pass_list)
 
     driver.quit()
 
