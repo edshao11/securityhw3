@@ -38,8 +38,7 @@ def sql():
 
     soup = BeautifulSoup(driver.page_source) # Get the page contents and use for parsing.
     tr_elements = soup.find_all('tr') # Refer to the BeautifulSoup documentation for more details.
-    print('123')
-    print(tr_elements)
+    print(len(tr_elements))
 
     # TODO: Populate the user_pass_list
     # user_pass_list = [] # Where this should be a list of lists for containing the users and passwords
