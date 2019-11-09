@@ -32,11 +32,11 @@ def sql():
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
 
-    driver.get(url)
-
-    soup = BeautifulSoup(driver.page_source) # Get the page contents and use for parsing.
-    tr_elements = soup.find_all('tr') # Refer to the BeautifulSoup documentation for more details.
-    print(len(tr_elements))
+    # driver.get(url)
+    #
+    # soup = BeautifulSoup(driver.page_source) # Get the page contents and use for parsing.
+    # tr_elements = soup.find_all('tr') # Refer to the BeautifulSoup documentation for more details.
+    # print(len(tr_elements))
 
     # TODO: Populate the user_pass_list
     # user_pass_list = [] # Where this should be a list of lists for containing the users and passwords
