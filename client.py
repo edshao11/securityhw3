@@ -53,6 +53,7 @@ def sql():
                 driver.get(url)
                 soup = BeautifulSoup(driver.page_source)
                 tr_elements = soup.find_all('tr')
+                print(pwd_n, len(tr_elements))
                 if len(tr_elements) == 2:
                     pwd = pwd_n
                     flag = True
