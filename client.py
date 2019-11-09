@@ -56,8 +56,7 @@ def sql():
                 soup = BeautifulSoup(driver.page_source)
                 tr_elements = soup.find_all('tr')
                 if len(tr_elements) == 2:
-                    username = tr_elements[1].split('</td><td>')
-                    print(username)
+                    print(tr_elements)
                     pwd = pwd_n
                     flag = True
                     break
