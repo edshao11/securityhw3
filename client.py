@@ -61,6 +61,7 @@ def sql():
                     pwd = pwd_n
                     if username is None:
                         username = tr_elements[1].find_all('td')[1].contents
+                        print(username)
                     flag = True
                     break
         user_pass_list.append({username: pwd})
