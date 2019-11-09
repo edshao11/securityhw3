@@ -38,11 +38,12 @@ def sql():
     # tr_elements = soup.find_all('tr') # Refer to the BeautifulSoup documentation for more details.
 
     # TODO: Populate the user_pass_list
-    # user_pass_list = [] # Where this should be a list of lists for containing the users and passwords
+    user_pass_list = []  # Where this should be a list of lists for containing the users and passwords
     # eg. [['username', 'password']]
     special_characters = ['%', '_', '#', '?']
 
     for i in range(1, 4):
+        username = None
         pwd = ''
         flag = True
         while flag:
@@ -56,11 +57,14 @@ def sql():
                 soup = BeautifulSoup(driver.page_source)
                 tr_elements = soup.find_all('tr')
                 if len(tr_elements) == 2:
-                    username = tr_elements[1].find_all('td')
-                    print(username)
+                    print(pwd_n)
+                    pwd = pwd_n
+                    if username is None:
+                        username = tr_elements[1].find_all('td')[1].contents
                     flag = True
                     break
-        print(pwd)
+        user_pass_list.append({username: pwd})
+    print(user_pass_list)
 
     # grader.sql_verify('low', user_pass_list)
 
