@@ -1,0 +1,9 @@
+<h1>Command Injection</h1>
+
+<p>Running Command: {{ command }}</p>
+<p>Output:</p>
+<p id="output">
+{% for line in result %}
+    {{ line }} <br/>
+{% endfor %}
+</p>

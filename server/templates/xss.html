@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Security-I Homework 2</title>
+        <!-- NOTE: You may use any JQuery APIs if you'd like. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Cross-Site Scripting XSS</h1>
+        {{ body  | safe }}
+        <script>
+         $.urlParam = function(name){
+             var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+             if (results==null){
+                 return null;
+             }
+             else{
+                 return decodeURI(results[1]) || 0;
+             }
+         }
+         var lang=$.urlParam('lang');
+         if (lang != '')
+             document.write('<div>Chosen language: <b>' + lang + '</b></div>');
+        </script>
+    </body>
+</html>

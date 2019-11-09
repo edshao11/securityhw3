@@ -1,0 +1,12 @@
+<h1>SQL Injection</h1>
+
+<table>
+<thead><th>id</th><th>username</th><th>name</th><th>surname</th></thead>
+{% for row in row_list %}
+<tr>
+    {% for col in row %}
+    <td>{{col}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
