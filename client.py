@@ -32,14 +32,22 @@ def sql():
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
 
-    driver.get(TARGET_SERVER_ENDPOINT)
+    url = 'http://35.225.46.109/sql_injection/low/id/3'
+
+    driver.get(url)
 
     soup = BeautifulSoup(driver.page_source) # Get the page contents and use for parsing.
     tr_elements = soup.find_all('tr') # Refer to the BeautifulSoup documentation for more details.
+    print(tr_elements)
 
     # TODO: Populate the user_pass_list
     # user_pass_list = [] # Where this should be a list of lists for containing the users and passwords
                         # eg. [['username', 'password']]
+
+    # pwd = ''
+    # while True:
+    #     for i in range(32, 127):
+
 
 
     # grader.sql_verify('low', user_pass_list)
