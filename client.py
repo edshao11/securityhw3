@@ -57,7 +57,6 @@ def sql():
                 soup = BeautifulSoup(driver.page_source)
                 tr_elements = soup.find_all('tr')
                 if len(tr_elements) == 2:
-                    print(pwd_n)
                     pwd = pwd_n
                     if username is None:
                         username = tr_elements[1].find_all('td')[1].contents[0]
