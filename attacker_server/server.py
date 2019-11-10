@@ -21,7 +21,7 @@ def steal_cookie(vuln_type):
     received_cookie = request.args.get('cookie', default='')
 
     # Reads the `cookie` parameter "password"
-    password_b64 = received_cookie.split(';')[1][12:]
+    password_b64 = received_cookie.replace('%20', '').split(';')[1][9:]
     password = base64.b64decode(password_b64)
 
     grader.xss_verify(vuln_type, password)  # Remember to decode the password.
