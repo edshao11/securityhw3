@@ -178,25 +178,25 @@ def xss(vuln_type, level):
     # The passwords here are base64 encoded.
     if '1' == vuln_type:
         if level == "low":
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDEgbG93')
         elif level == "medium":
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDEgbWVkaXVt')
         else:
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDEgaGlnaA==')
     elif '2' == vuln_type:
         if level == "low":
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDIgbG93')
         elif level == "medium": 
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDIgbWVkaXVt')
         else:
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDIgaGlnaA==')
     elif '3' == vuln_type:
         if level == "low":
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDMgbG93')
         elif level == "medium":
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDMgbWVkaXVt')
         else:
-            resp.set_cookie('password', 'find it in the public server')
+            resp.set_cookie('password', 'Y29va2llIDMgaGlnaA==')
 
     return resp
 
