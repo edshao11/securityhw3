@@ -8,7 +8,7 @@ sys.path.append("..")
 import grader
 
 TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
-# TARGET_SERVER_ENDPOINT = 'http://35.223.68.134:80'
+# TARGET_SERVER_ENDPOINT = 'http://35.225.46.109:80'
 
 app = Flask(__name__)
 
@@ -19,6 +19,7 @@ def steal_cookie(vuln_type):
     Use this to exfiltrate a stolen cookie from the vulnerable server.
     """
     received_cookie = request.args.get('cookie', default='')
+    print(received_cookie)
 
     # Reads the `cookie` parameter "password"
 
