@@ -142,7 +142,6 @@ def xss(vuln_type, level):
             comment = re.sub(r'<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t', '', comment, flags=re.IGNORECASE)
             content += 'Comment:' + comment
             pass
-        print(comment)
     elif '2' == vuln_type:
         content += "<h3>The Stored Kind</h3>\n"
 
@@ -171,7 +170,9 @@ def xss(vuln_type, level):
         elif 'high' == level:
             lang = lang if lang in ['fr', 'en', 'es', 'de'] else 'en'
 
-
+    print()
+    print(comment)
+    print()
     resp = make_response(render_template('xss.html', body=content))
     resp.set_cookie('username', 'CookieMonster')
 
