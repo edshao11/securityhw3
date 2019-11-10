@@ -154,6 +154,10 @@ def xss(vuln_type, level):
             elif 'high' == level:
                 comment = re.sub(r'<[a-z]*>', '', comment, flags=re.IGNORECASE)
 
+            print()
+            print(comment)
+            print()
+
             cursor.execute("INSERT INTO comments VALUES(NULL, '%s', '%s')" % (comment, time.ctime()))
 
         cursor.execute("SELECT id, comment, time FROM comments")
@@ -170,9 +174,6 @@ def xss(vuln_type, level):
         elif 'high' == level:
             lang = lang if lang in ['fr', 'en', 'es', 'de'] else 'en'
 
-    print()
-    print(comment)
-    print()
     resp = make_response(render_template('xss.html', body=content))
     resp.set_cookie('username', 'CookieMonster')
 
