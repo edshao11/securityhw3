@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1a6c935-23de-416b-b531-d352d2c5fd00" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attacker_server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/attacker_server/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +98,7 @@
       <updated>1573267741863</updated>
       <workItem from="1573267746462" duration="2642000" />
       <workItem from="1573275003262" duration="10231000" />
-      <workItem from="1573409206495" duration="980000" />
+      <workItem from="1573409206495" duration="2338000" />
     </task>
     <servers />
   </component>
@@ -121,6 +121,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/student$client.coverage" NAME="command_injection Coverage Results" MODIFIED="1573272217071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/securityhw3$command_injection.coverage" NAME="command_injection Coverage Results" MODIFIED="1573276024598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/securityhw3$server.coverage" NAME="server Coverage Results" MODIFIED="1573415760488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/attacker_server" />
+    <SUITE FILE_PATH="coverage/securityhw3$server.coverage" NAME="server Coverage Results" MODIFIED="1573416309646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/attacker_server" />
   </component>
 </project>

