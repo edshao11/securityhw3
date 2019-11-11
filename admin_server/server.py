@@ -24,9 +24,7 @@ def forge(level, msg):
     if level == 'low':
         requests.get(url)
     else:
-        requests.get(url, headers={
-            'Referer': 'csrf_target'
-        })
+        requests.get(url)
 
     return render_template('csrf.html', body=content)
 
