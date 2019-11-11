@@ -169,9 +169,7 @@ def xss(vuln_type, level):
             lang = 'en' if '<script' in lang else lang
         elif 'high' == level:
             lang = lang if lang in ['fr', 'en', 'es', 'de'] else 'en'
-        print()
-        print(lang)
-        print()
+
     resp = make_response(render_template('xss.html', body=content))
     resp.set_cookie('username', 'CookieMonster')
 

