@@ -6,8 +6,8 @@ import grader
 import argparse
 
 # NOTE: If you choose to run the servers on different ports for testing, please remember to set it back before submission.
-# TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
-TARGET_SERVER_ENDPOINT = 'http://35.225.46.109:80'
+TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
+# TARGET_SERVER_ENDPOINT = 'http://35.225.46.109:80'
 
 # NOTE: where you need to update your static IP address of your server
 ATTACKER_SERVER_ENDPOINT = 'http://localhost:1338'
