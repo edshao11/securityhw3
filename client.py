@@ -140,7 +140,11 @@ def csrf(level):
     url = TARGET_SERVER_ENDPOINT + '/' + 'csrf_target'
     driver.get(url)
     soup = BeautifulSoup(driver.page_source)
-    comments = soup.find_all('tr')
+    tr_elements = soup.find_all('tr')
+    tr_elements.pop(0)
+    comments = []
+    for tr in tr_elements:
+        comments.append(tr.find_all('td')[1].contents[0])
 
     grader.csrf_verify(level, secret_msg, comments) # where secret_msg is the expected comment in the database from your attack.
 
