@@ -14,16 +14,19 @@ TARGET_SERVER_ENDPOINT = 'http://localhost:1337'
 app = Flask(__name__)
 
 
-@app.route('/csrf_target/<msg>')
-def forge(msg):
+@app.route('/csrf_target/<level>/<msg>')
+def forge(level, msg):
     # Modify the content for different levels
     content = '<h3>csrf</h3>'
 
-    url = TARGET_SERVER_ENDPOINT + '/' + 'csrf_target' + '?comment=' + msg
+    url = TARGET_SERVER_ENDPOINT + '/' + 'csrf_target' + '/' + level + '?comment=' + msg
 
-    requests.get(url, headers={
-        'Referer': 'csrf_target'
-    })
+    if level == 'low':
+        requests.get(url)
+    else:
+        requests.get(url, headers={
+            'Referer': 'csrf_target'
+        })
 
     return render_template('csrf.html', body=content)
 

